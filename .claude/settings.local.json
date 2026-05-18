@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"D:\\\\Projects\\\\weddsite\\\\Client Websites\\\\Premium Client Websites\\\\salome\" -Recurse)",
+      "Bash(Select-Object FullName, Length)",
+      "Bash(Sort-Object FullName)",
+      "PowerShell(Get-ChildItem \"D:\\\\Projects\\\\weddsite\\\\Client Websites\\\\Premium Client Websites\\\\salome\\\\\" | Where-Object { $_.Extension -match 'jpg|jpeg' } | Select-Object Name)",
+      "PowerShell(dir \"D:\\\\Projects\\\\weddsite\\\\Client Websites\\\\Premium Client Websites\\\\salome\\\\\")",
+      "Bash(dir \"D:\\\\Projects\\\\weddsite\\\\backend\" /b /a)"
+    ]
+  }
+}

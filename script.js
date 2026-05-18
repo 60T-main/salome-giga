@@ -47,12 +47,27 @@ window.scrollTo(0, 0);
     setTimeout(function () { loadingScreen.classList.add('gone'); }, 700);
   }
 
-  if (video1.readyState >= 2) {
-    hideLoader();
-  } else {
-    video1.addEventListener('loadeddata', hideLoader, { once: true });
-    setTimeout(hideLoader, 8000); // fallback
+  function setupLoader() {
+    if (introPoster && introPoster.complete) {
+      hideLoader();
+    } else if (introPoster) {
+      introPoster.addEventListener('load', hideLoader, { once: true });
+      introPoster.addEventListener('error', setupVideoFallback, { once: true });
+    } else {
+      setupVideoFallback();
+    }
   }
+
+  function setupVideoFallback() {
+    if (video1.readyState >= 2) {
+      hideLoader();
+    } else {
+      video1.addEventListener('loadeddata', hideLoader, { once: true });
+    }
+    setTimeout(hideLoader, 4000);
+  }
+
+  setupLoader();
 
   // ===== Intro Sequence =====
 
@@ -82,6 +97,7 @@ window.scrollTo(0, 0);
       introClick.style.opacity = '0';
     });
     if (introPoster) introPoster.classList.add('hidden');
+    video2.load();
     video1.play();
     video1.addEventListener('ended', playVideo2, { once: true });
   }

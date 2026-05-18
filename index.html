@@ -30,8 +30,15 @@
       <div class="intro-divider"></div>
       <span class="intro-ka">გახსენით მოსაწვევი</span>
     </div>
-    <video id="video-1" src="1.mp4" playsinline preload="auto"></video>
-    <video id="video-2" src="2.mp4" playsinline preload="auto"></video>
+    <video id="video-1" playsinline preload="auto">
+      <source src="1.webm" type="video/webm">
+      <source src="1.mp4" type="video/mp4">
+    </video>
+    <video id="video-2" playsinline preload="auto">
+      <source src="2.webm" type="video/webm">
+      <source src="2.mp4" type="video/mp4">
+    </video>
+    <img id="intro-poster" src="image.jpg" alt="">
   </div>
 
   <!-- Language Toggle -->

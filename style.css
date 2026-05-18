@@ -230,7 +230,8 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
 }
 
 #video-1,
-#video-2 {
+#video-2,
+#intro-poster {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -238,6 +239,10 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
   object-fit: cover;
   pointer-events: none;
   transition: opacity 0.5s ease;
+}
+
+#intro-poster.hidden {
+  opacity: 0;
 }
 
 #video-1 {

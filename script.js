@@ -8,6 +8,7 @@ window.scrollTo(0, 0);
   var loadingScreen = document.getElementById('loading-screen');
   var introOverlay  = document.getElementById('intro-overlay');
   var introClick    = document.getElementById('intro-click');
+  var introPoster   = document.getElementById('intro-poster');
   var video1        = document.getElementById('video-1');
   var video2        = document.getElementById('video-2');
 
@@ -80,6 +81,7 @@ window.scrollTo(0, 0);
     requestAnimationFrame(function () {
       introClick.style.opacity = '0';
     });
+    if (introPoster) introPoster.classList.add('hidden');
     video1.play();
     video1.addEventListener('ended', playVideo2, { once: true });
   }

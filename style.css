@@ -174,7 +174,7 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: var(--navy-dark);
+  background: #f0e6da;
   display: flex;
   align-items: center;
   justify-content: center;

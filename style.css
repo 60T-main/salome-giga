@@ -110,6 +110,9 @@ input, textarea, select, button {
 
 body.no-scroll {
   overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
 /* ===== CUSTOM SCROLLBAR ===== */

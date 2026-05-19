@@ -15,6 +15,9 @@ window.scrollTo(0, 0);
   var musicToggle   = document.getElementById('music-toggle');
   var musicSwitch   = document.getElementById('music-switch');
 
+  // Kick off audio buffering immediately — mobile often ignores preload="auto"
+  if (bgMusic) bgMusic.load();
+
   // ===== Language System =====
 
   function setLanguage(lang) {
@@ -120,16 +123,22 @@ window.scrollTo(0, 0);
     if (bgMusic) {
       bgMusic.volume = 0.2;
       bgMusic.play().then(function () {
-        bgMusic.volume = 0.2;
         if (musicSwitch) {
           musicSwitch.classList.add('playing');
           musicSwitch.setAttribute('aria-checked', 'true');
         }
       }).catch(function () {
-        if (musicSwitch) {
-          musicSwitch.classList.remove('playing');
-          musicSwitch.setAttribute('aria-checked', 'false');
-        }
+        // Audio not buffered yet — iOS gesture already unlocked the element,
+        // so retrying in canplay (non-gesture) still works on most browsers.
+        bgMusic.addEventListener('canplay', function () {
+          bgMusic.play().then(function () {
+            bgMusic.volume = 0.2;
+            if (musicSwitch) {
+              musicSwitch.classList.add('playing');
+              musicSwitch.setAttribute('aria-checked', 'true');
+            }
+          }).catch(function () {});
+        }, { once: true });
       });
     }
     introOverlay.style.cursor = 'default';

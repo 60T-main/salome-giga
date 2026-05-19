@@ -209,24 +209,6 @@ window.scrollTo(0, 0);
   // Initialize language (UI shown only after intro ends)
   setLanguage(localStorage.getItem('lang') || 'ka');
 
-  // ===== RSVP — Guest count toggle =====
-
-  var rsvpGuests = document.getElementById('rsvp-guests');
-  var attendanceInputs = document.querySelectorAll('input[name="attendance"]');
-
-  attendanceInputs.forEach(function (input) {
-    input.addEventListener('change', function () {
-      if (input.value === 'yes') {
-        rsvpGuests.classList.add('open');
-        rsvpGuests.setAttribute('aria-hidden', 'false');
-      } else {
-        rsvpGuests.classList.remove('open');
-        rsvpGuests.setAttribute('aria-hidden', 'true');
-        document.querySelectorAll('input[name="guestCount"]').forEach(function (r) { r.checked = false; });
-      }
-    });
-  });
-
   // ===== RSVP — Submit =====
 
   var API_URL    = 'https://weddsites-backend.vercel.app/api/rsvp';
@@ -248,7 +230,6 @@ window.scrollTo(0, 0);
       var name       = rsvpNameInput    ? rsvpNameInput.value.trim()    : '';
       var surname    = rsvpSurnameInput ? rsvpSurnameInput.value.trim() : '';
       var attendance = document.querySelector('input[name="attendance"]:checked');
-      var guestCount = document.querySelector('input[name="guestCount"]:checked');
 
       if (!name) {
         rsvpStatus.textContent = currentLang() === 'en' ? 'Please enter your name.' : 'გთხოვთ შეიყვანოთ სახელი.';
@@ -266,10 +247,7 @@ window.scrollTo(0, 0);
         projectId:  PROJECT_ID,
         name:       name,
         surname:    surname || undefined,
-        attendance: attendance.value,
-        guestCount: (attendance.value === 'yes' && guestCount)
-          ? Number(guestCount.value)
-          : undefined
+        attendance: attendance.value
       };
 
       try {

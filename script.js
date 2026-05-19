@@ -101,19 +101,9 @@ window.scrollTo(0, 0);
       }).catch(function () {});
       setTimeout(function () { hvFwd.style.transition = ''; }, 1200);
     }
-    // Intro videos (1.webm carries its own audio) have finished — now unmute
-    // and start the background music from the top. The element was already
-    // unlocked muted in playVideo1(), so this needs no fresh user gesture.
-    if (bgMusic) {
-      bgMusic.muted = false;
-      bgMusic.volume = 0.2;
-      try { bgMusic.currentTime = 0; } catch (e) {}
-      bgMusic.play().then(function () {
-        if (musicSwitch) {
-          musicSwitch.classList.add('playing');
-          musicSwitch.setAttribute('aria-checked', 'true');
-        }
-      }).catch(function () {});
+    // Safety net: make sure the music is playing once the site reveals.
+    if (bgMusic && bgMusic.paused && musicSwitch && musicSwitch.classList.contains('playing')) {
+      bgMusic.play().catch(function () {});
     }
     introOverlay.classList.add('fade-out');
     setTimeout(function () {
@@ -133,13 +123,16 @@ window.scrollTo(0, 0);
   }
 
   function playVideo1() {
-    // Unlock the audio element inside the gesture by starting it MUTED, so iOS
-    // Safari lets us unmute it later (in revealSite) without a fresh gesture.
-    // Muted, it stays out of the way of the intro video's own audio track.
+    // Intro videos are muted, so start the background music right on the tap.
     if (bgMusic) {
-      bgMusic.muted = true;
+      bgMusic.muted = false;
       bgMusic.volume = 0.2;
-      bgMusic.play().catch(function () {});
+      bgMusic.play().then(function () {
+        if (musicSwitch) {
+          musicSwitch.classList.add('playing');
+          musicSwitch.setAttribute('aria-checked', 'true');
+        }
+      }).catch(function () {});
     }
     introOverlay.style.cursor = 'default';
     introClick.style.animation = 'none';

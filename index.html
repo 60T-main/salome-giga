@@ -26,10 +26,10 @@
                 <span class="intro-ka">გახსენით მოსაწვევი</span>
             </div>
             <video id="video-1" playsinline preload="auto">
-                <source src="1.mp4" type="video/mp4">
+                <source src="1.webm" type="video/webm">
             </video>
             <video id="video-2" playsinline preload="none">
-                <source src="2.mp4" type="video/mp4">
+                <source src="2.webm" type="video/webm">
             </video>
             <img id="intro-poster" src="image.jpg" alt="">
         </div>
@@ -43,10 +43,10 @@
         <!-- Music Toggle -->
         <div id="music-toggle">
             <div
-                class="music-switch playing"
+                class="music-switch"
                 id="music-switch"
                 role="switch"
-                aria-checked="true"
+                aria-checked="false"
                 tabindex="0"
                 aria-label="Music / მუსიკა"
             >
@@ -79,7 +79,7 @@
                     loop
                     preload="auto"
                 >
-                    <source src="3.mp4" type="video/mp4">
+                    <source src="3.webm" type="video/webm">
                 </video>
                 <div class="hero-center">
                     <img class="h-initials" src="initials.png" alt="S & G">
@@ -146,7 +146,7 @@
                             </div>
                             <a
                                 class="event-card__map"
-                                href="https://maps.google.com/?q=G17,+13+Sherif+Khimshiashvili+Street,+Batumi"
+                                href="https://maps.app.goo.gl/3i5Qum5DaWYANpAx7"
                                 target="_blank"
                                 rel="noopener"
                                 data-ka="რუკაზე ნახვა"
@@ -163,8 +163,7 @@
                     <h2 class="section-title" data-ka="დრეს კოდი" data-en="Dress Code">დრეს კოდი</h2>
                     <div class="section-rule"></div>
                     <img class="dresscode-img" src="dress-code.png" alt="">
-                    <p class="dresscode-main">Black Tie &amp; Evening Gowns</p>
-                    <p class="dresscode-sub">სმოკინგი და საღამოს კაბები</p>
+                    <p class="dresscode-main" data-ka="სმოკინგი და საღამოს კაბები" data-en="Black Tie & Evening Gowns">სმოკინგი და საღამოს კაბები</p>
                 </div>
             </section>
             <!-- RSVP -->
@@ -174,18 +173,32 @@
                     <h2 class="section-title" data-ka="შეძლებთ დასწრებას?" data-en="Will you join us?">შეძლებთ დასწრებას?</h2>
                     <div class="section-rule"></div>
                     <form id="rsvp-form" class="rsvp-form" novalidate>
-                        <div class="rsvp-field">
-                            <input
-                                type="text"
-                                id="rsvp-name"
-                                name="name"
-                                class="rsvp-input"
-                                data-placeholder-ka="სახელი"
-                                data-placeholder-en="Name"
-                                placeholder="სახელი"
-                                required
-                                autocomplete="given-name"
-                            >
+                        <div class="rsvp-fields-row">
+                            <div class="rsvp-field">
+                                <input
+                                    type="text"
+                                    id="rsvp-name"
+                                    name="name"
+                                    class="rsvp-input"
+                                    data-placeholder-ka="სახელი"
+                                    data-placeholder-en="Name"
+                                    placeholder="სახელი"
+                                    required
+                                    autocomplete="given-name"
+                                >
+                            </div>
+                            <div class="rsvp-field">
+                                <input
+                                    type="text"
+                                    id="rsvp-surname"
+                                    name="surname"
+                                    class="rsvp-input"
+                                    data-placeholder-ka="გვარი"
+                                    data-placeholder-en="Surname"
+                                    placeholder="გვარი"
+                                    autocomplete="family-name"
+                                >
+                            </div>
                         </div>
                         <div class="rsvp-radios">
                             <label class="radio-card" for="rsvp-yes">

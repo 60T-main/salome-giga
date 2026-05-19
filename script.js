@@ -121,7 +121,16 @@ window.scrollTo(0, 0);
       bgMusic.volume = 0.2;
       bgMusic.play().then(function () {
         bgMusic.volume = 0.2;
-      }).catch(function () {});
+        if (musicSwitch) {
+          musicSwitch.classList.add('playing');
+          musicSwitch.setAttribute('aria-checked', 'true');
+        }
+      }).catch(function () {
+        if (musicSwitch) {
+          musicSwitch.classList.remove('playing');
+          musicSwitch.setAttribute('aria-checked', 'false');
+        }
+      });
     }
     introOverlay.style.cursor = 'default';
     introClick.style.animation = 'none';
@@ -177,13 +186,16 @@ window.scrollTo(0, 0);
 
   // ===== Placeholder language support =====
 
-  var rsvpNameInput = document.getElementById('rsvp-name');
+  var rsvpNameInput    = document.getElementById('rsvp-name');
+  var rsvpSurnameInput = document.getElementById('rsvp-surname');
 
   function updatePlaceholders(lang) {
-    if (!rsvpNameInput) return;
-    rsvpNameInput.placeholder = lang === 'en'
-      ? (rsvpNameInput.dataset.placeholderEn || '')
-      : (rsvpNameInput.dataset.placeholderKa || '');
+    [rsvpNameInput, rsvpSurnameInput].forEach(function (el) {
+      if (!el) return;
+      el.placeholder = lang === 'en'
+        ? (el.dataset.placeholderEn || '')
+        : (el.dataset.placeholderKa || '');
+    });
   }
 
   var _origSetLanguage = setLanguage;
@@ -231,7 +243,8 @@ window.scrollTo(0, 0);
     rsvpForm.addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      var name       = rsvpNameInput ? rsvpNameInput.value.trim() : '';
+      var name       = rsvpNameInput    ? rsvpNameInput.value.trim()    : '';
+      var surname    = rsvpSurnameInput ? rsvpSurnameInput.value.trim() : '';
       var attendance = document.querySelector('input[name="attendance"]:checked');
       var guestCount = document.querySelector('input[name="guestCount"]:checked');
 
@@ -250,6 +263,7 @@ window.scrollTo(0, 0);
       var body = {
         projectId:  PROJECT_ID,
         name:       name,
+        surname:    surname || undefined,
         attendance: attendance.value,
         guestCount: (attendance.value === 'yes' && guestCount)
           ? Number(guestCount.value)

@@ -875,6 +875,12 @@ body.lang-en .event-card__time {
   gap: 28px;
 }
 
+.rsvp-fields-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
 .rsvp-field {
   display: flex;
   flex-direction: column;

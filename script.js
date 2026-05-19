@@ -11,6 +11,9 @@ window.scrollTo(0, 0);
   var introPoster   = document.getElementById('intro-poster');
   var video1        = document.getElementById('video-1');
   var video2        = document.getElementById('video-2');
+  var bgMusic       = document.getElementById('bg-music');
+  var musicToggle   = document.getElementById('music-toggle');
+  var musicSwitch   = document.getElementById('music-switch');
 
   // ===== Language System =====
 
@@ -71,14 +74,38 @@ window.scrollTo(0, 0);
 
   // ===== Intro Sequence =====
 
+  // ===== Hero Video Loop =====
+
+  var hvFwd = document.getElementById('hv-fwd');
+
+  if (hvFwd) {
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        hvFwd.pause();
+      } else if (hvFwd.classList.contains('show')) {
+        hvFwd.play();
+      }
+    });
+  }
+
   function revealSite() {
+    var heroCenter = document.querySelector('.hero-center');
+    if (heroCenter) heroCenter.classList.add('revealed');
+    if (hvFwd) {
+      hvFwd.style.transition = 'opacity 1s ease';
+      hvFwd.play().then(function () {
+        hvFwd.classList.add('show');
+      }).catch(function () {});
+      setTimeout(function () { hvFwd.style.transition = ''; }, 1200);
+    }
     introOverlay.classList.add('fade-out');
     setTimeout(function () {
       introOverlay.classList.add('gone');
       document.body.classList.remove('no-scroll');
       document.body.classList.add('scrollbar-ready');
       langToggle.classList.add('visible');
-    }, 900);
+      if (musicToggle) musicToggle.classList.add('visible');
+    }, 500);
   }
 
   function playVideo2() {
@@ -89,6 +116,13 @@ window.scrollTo(0, 0);
   }
 
   function playVideo1() {
+    // Start music synchronously inside the gesture so iOS Safari allows it
+    if (bgMusic) {
+      bgMusic.volume = 0.2;
+      bgMusic.play().then(function () {
+        bgMusic.volume = 0.2;
+      }).catch(function () {});
+    }
     introOverlay.style.cursor = 'default';
     introClick.style.animation = 'none';
     introClick.style.opacity = '1';
@@ -106,6 +140,40 @@ window.scrollTo(0, 0);
   introOverlay.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo1(); }
   }, { once: true });
+
+  // ===== Music Toggle =====
+
+  if (bgMusic && musicSwitch) {
+    function toggleMusic() {
+      if (musicSwitch.classList.contains('playing')) {
+        bgMusic.pause();
+        musicSwitch.classList.remove('playing');
+        musicSwitch.setAttribute('aria-checked', 'false');
+      } else {
+        bgMusic.play().then(function () {
+          bgMusic.volume = 0.2;
+        }).catch(function () {});
+        musicSwitch.classList.add('playing');
+        musicSwitch.setAttribute('aria-checked', 'true');
+      }
+    }
+
+    musicSwitch.addEventListener('click', toggleMusic);
+    musicSwitch.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMusic(); }
+    });
+
+    // Pause when the tab/browser loses focus, resume when it returns
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        bgMusic.pause();
+      } else if (musicSwitch.classList.contains('playing')) {
+        bgMusic.play().then(function () {
+          bgMusic.volume = 0.2;
+        }).catch(function () {});
+      }
+    });
+  }
 
   // ===== Placeholder language support =====
 

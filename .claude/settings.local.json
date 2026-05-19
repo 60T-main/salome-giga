@@ -6,7 +6,14 @@
       "Bash(Sort-Object FullName)",
       "PowerShell(Get-ChildItem \"D:\\\\Projects\\\\weddsite\\\\Client Websites\\\\Premium Client Websites\\\\salome\\\\\" | Where-Object { $_.Extension -match 'jpg|jpeg' } | Select-Object Name)",
       "PowerShell(dir \"D:\\\\Projects\\\\weddsite\\\\Client Websites\\\\Premium Client Websites\\\\salome\\\\\")",
-      "Bash(dir \"D:\\\\Projects\\\\weddsite\\\\backend\" /b /a)"
+      "Bash(dir \"D:\\\\Projects\\\\weddsite\\\\backend\" /b /a)",
+      "Bash(ffmpeg -version)",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,r_frame_rate,duration,nb_frames -of default=nw=1 3.mp4)",
+      "Bash(cp 3.mp4 3-src.mp4)",
+      "Bash(ffmpeg -y -i 3-src.mp4 -an -c:v libx264 -preset slow -crf 20 -g 1 -keyint_min 1 -sc_threshold 0 -movflags +faststart -pix_fmt yuv420p 3.mp4)",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=width,height,duration -of default=nw=1 3.mp4)",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=width,height,duration -of default=nw=1 3-rev.mp4)",
+      "Bash(grep -nA22 \"+#music-toggle {\")"
     ]
   }
 }

@@ -389,7 +389,7 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
 /* ===== SHARED HERO CENTER ===== */
 .hero-center {
   text-align: center;
-  padding: 142px 24px 40px;
+  padding: 6rem 24px 40px;
   max-width: 600px;
 }
 
@@ -466,7 +466,7 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
 
 .h-scroll {
   position: absolute;
-  bottom: 12rem;
+  bottom: 18%;
   left: 50%;
   right: 50%;
   transform: translateX(-50%);

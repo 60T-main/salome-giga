@@ -389,15 +389,18 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
 /* ===== SHARED HERO CENTER ===== */
 .hero-center {
   text-align: center;
-  padding: 42px 24px 40px;
+  padding: 142px 24px 40px;
   max-width: 600px;
 }
 
 .hero-center .h-initials,
 .hero-center .h-names,
 .hero-center .h-date,
-.hero-center .h-subtitle,
-.hero-center .h-scroll {
+.hero-center .h-subtitle {
+  opacity: 0;
+}
+
+.h-scroll {
   opacity: 0;
 }
 
@@ -405,7 +408,7 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
 .hero-center.revealed .h-names     { animation: fadeInUp 0.7s ease forwards; animation-delay: 0.15s; }
 .hero-center.revealed .h-date      { animation: fadeInUp 0.7s ease forwards; animation-delay: 0.28s; }
 .hero-center.revealed .h-subtitle  { animation: fadeInUp 0.7s ease forwards; animation-delay: 0.40s; }
-.hero-center.revealed .h-scroll    { animation: fadeInUp 0.7s ease forwards; animation-delay: 0.52s; }
+.hero-center.revealed ~ .h-scroll  { animation: fadeInUpCentered 0.7s ease forwards; animation-delay: 0.52s; }
 
 .h-rule {
   width: 48px;
@@ -462,12 +465,16 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
 }
 
 .h-scroll {
+  position: absolute;
+  bottom: 12rem;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  margin: 10px auto 0;
   background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -581,6 +588,11 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
 @keyframes ringExpand {
   0%   { transform: scale(1); opacity: 0.45; }
   100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes fadeInUpCentered {
+  from { opacity: 0; transform: translateX(-50%) translateY(18px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
 @keyframes chevronBounce {

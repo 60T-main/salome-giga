@@ -653,6 +653,7 @@ body.lang-en .section-title {
   width: 100%;
   top: -20%;
   left: 50%;
+  opacity: 0.7;
   transform: translateX(-50%);
   z-index: 1;
   pointer-events: none;

@@ -273,6 +273,34 @@ window.scrollTo(0, 0);
     });
   }
 
+  // ===== Countdown =====
+
+  var cdTarget = new Date('2026-07-18T14:00:00+04:00').getTime();
+  var cdDays   = document.getElementById('cd-days');
+  var cdHours  = document.getElementById('cd-hours');
+  var cdMins   = document.getElementById('cd-mins');
+  var cdSecs   = document.getElementById('cd-secs');
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function tickCountdown() {
+    var diff = cdTarget - Date.now();
+    if (diff < 0) diff = 0;
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    if (cdDays)  cdDays.textContent  = pad(d);
+    if (cdHours) cdHours.textContent = pad(h);
+    if (cdMins)  cdMins.textContent  = pad(m);
+    if (cdSecs)  cdSecs.textContent  = pad(s);
+  }
+
+  if (cdDays) {
+    tickCountdown();
+    setInterval(tickCountdown, 1000);
+  }
+
   // ===== Scroll Reveal =====
 
   var revealEls = document.querySelectorAll('.reveal');

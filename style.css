@@ -213,7 +213,6 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
   font-family: 'Cormorant Garamond', serif;
   font-size: 12px;
   letter-spacing: 0.38em;
-  text-transform: uppercase;
   color: #2a1a0e;
   font-weight: 500;
 }
@@ -448,7 +447,6 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
   font-weight: 500;
   color: #4d6a93;
   letter-spacing: 0.26em;
-  text-transform: uppercase;
   margin: 12px 0 24px;
 }
 
@@ -490,7 +488,6 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
   font-size: 11px;
   letter-spacing: 0.15em;
   color: #4d6a93;
-  text-transform: uppercase;
   font-weight: 400;
 }
 
@@ -627,7 +624,6 @@ body.scrollbar-ready::-webkit-scrollbar-thumb {
   font-family: 'Cormorant Garamond', serif;
   font-size: 11px;
   letter-spacing: 0.35em;
-  text-transform: uppercase;
   color: var(--teal);
   margin-bottom: 14px;
 }
@@ -655,7 +651,7 @@ body.lang-en .section-title {
 .flowers-container {
   position: absolute;
   width: 100%;
-  top: -6%;
+  top: -20%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
@@ -714,7 +710,6 @@ body.lang-en .section-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: 11px;
   letter-spacing: 0.28em;
-  text-transform: uppercase;
   color: var(--teal);
   margin-bottom: 16px;
   line-height: 1.6;
@@ -828,7 +823,6 @@ body.lang-en .event-card__time {
   font-family: 'Cormorant Garamond', serif;
   font-size: 11px;
   letter-spacing: 0.28em;
-  text-transform: uppercase;
   color: var(--text);
   text-decoration: none;
   border-bottom: 1px solid var(--rule);
@@ -847,31 +841,6 @@ body.lang-en .event-card__time {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   position: relative;
-  overflow-x: clip;
-  overflow-y: visible;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.dresscode-img {
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-  display: block;
-}
-
-.dresscode-main {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px;
-  color: var(--text);
-  letter-spacing: 0.08em;
-  margin-bottom: 10px;
-}
-
-.dresscode-sub {
-  font-size: 16px;
-  color: var(--text-soft);
-  letter-spacing: 0.04em;
 }
 
 /* ===== RSVP ===== */
@@ -916,7 +885,6 @@ body.lang-en .event-card__time {
   color: var(--text-soft);
   font-size: 13px;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
 }
 
 .rsvp-input:focus {
@@ -971,7 +939,6 @@ body.lang-en .event-card__time {
   font-family: inherit;
   font-size: 11px;
   letter-spacing: 0.32em;
-  text-transform: uppercase;
   padding: 16px 40px;
   cursor: pointer;
   border-radius: 2px;
@@ -1053,6 +1020,175 @@ body.lang-en .thankyou-text {
   color: var(--text);
 }
 
+/* ===== COUNTDOWN ===== */
+.countdown {
+  margin-top: 5rem;
+  background-color: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.countdown-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-top: 14px;
+  margin-bottom: 0;
+}
+
+.countdown .section-rule {
+  margin: 30px auto 40px;
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.cd-unit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px;
+  min-width: 66px;
+}
+
+.cd-unit + .cd-unit::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8%;
+  height: 52%;
+  width: 1px;
+  background: var(--rule);
+}
+
+.cd-num {
+  font-family: 'DM Medea Display', serif;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+body.lang-en .cd-num {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.cd-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-top: 12px;
+}
+
+/* ===== DAY GROUPS ===== */
+.day-group {
+  margin-bottom: 60px;
+}
+
+.day-group:last-child {
+  margin-bottom: 0;
+}
+
+.day-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.day-header::before,
+.day-header::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--rule);
+}
+
+.day-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.finale .day-header {
+  margin-bottom: 18px;
+}
+
+.event-card__note {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  color: var(--text-soft);
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+  margin-top: 6px;
+  max-width: 320px;
+}
+
+/* ===== CLOSING ===== */
+.closing {
+  background-color: var(--bg);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.closing-crest {
+  display: block;
+  width: 240px;
+  max-width: 72%;
+  margin: 0 auto 36px;
+  mix-blend-mode: multiply;
+  opacity: 0.95;
+}
+
+.closing-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--teal);
+  line-height: 2.2;
+  margin-bottom: 28px;
+  padding: 0 10px;
+}
+
+.closing-divider {
+  width: 36px;
+  height: 1px;
+  background: var(--rule);
+  margin: 0 auto 24px;
+}
+
+.closing-love {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: var(--text-soft);
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+
+.closing-names {
+  font-family: 'DM Medea Display', serif;
+  font-size: 34px;
+  color: #2d4870;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+body.lang-en .closing-names {
+  font-family: 'Cormorant Garamond', serif;
+}
+
 /* ===== DESKTOP NOTICE ===== */
 #desktop-notice {
   display: none;
@@ -1108,6 +1244,10 @@ body.lang-en .thankyou-text {
   .h-initials     { width: 150px; }
   .section        { padding: 96px 40px; }
   .section-title  { font-size: var(--fs-title-md); }
+  .cd-num         { font-size: 56px; }
+  .cd-unit        { min-width: 78px; padding: 0 20px; }
+  .closing-names  { font-size: 42px; }
+  .closing-crest  { width: 280px; }
 }
 
 @media (min-width: 769px) {
@@ -1122,8 +1262,6 @@ body.lang-en .thankyou-text {
   .event-card         { flex: 1; }
   .event-card__venue  { font-size: var(--fs-venue-lg); }
   .event-card__time   { font-size: var(--fs-time-lg); }
-  .dresscode-main     { font-size: 30px; }
-  .dresscode-sub      { font-size: 18px; }
 }
 
 @media (min-width: 1025px) {

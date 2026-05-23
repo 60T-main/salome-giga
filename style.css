@@ -691,8 +691,8 @@ body.lang-en .section-title {
 }
 
 .event-card__img {
-  width: 330px;
-  height: 330px;
+  width: 400px;
+  height: 360px;
   margin-bottom: 24px;
   display: flex;
   align-items: center;
@@ -1023,9 +1023,30 @@ body.lang-en .thankyou-text {
 /* ===== COUNTDOWN ===== */
 .countdown {
   margin-top: 5rem;
-  background-color: var(--bg-alt);
-  border-top: 1px solid var(--border);
+  /* background-color: var(--bg-alt); */
+  /* border-top: 1px solid var(--border); */
   border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-col {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: auto;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.countdown-col--left {
+  left: -85px;
+}
+
+.countdown-col--right {
+  right: -85px;
+  transform: translateY(-50%) scaleX(-1);
 }
 
 .countdown-sub {
@@ -1069,7 +1090,7 @@ body.lang-en .thankyou-text {
 
 .cd-num {
   font-family: 'DM Medea Display', serif;
-  font-size: 44px;
+  font-size: 24px;
   line-height: 1;
   color: var(--text);
   font-variant-numeric: tabular-nums;
@@ -1123,6 +1144,25 @@ body.lang-en .cd-num {
 
 .finale .day-header {
   margin-bottom: 18px;
+}
+
+.finale-video-wrap {
+  width: 50rem;
+  margin-left: -65%;
+  overflow: hidden;
+  /* border-radius: 12px; */
+  margin-bottom: 32px;
+}
+
+.finale-video-wrap video {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.85;
+}
+
+.finale .event-card__schedule {
+  align-items: center;
 }
 
 .event-card__note {

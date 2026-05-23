@@ -788,8 +788,10 @@ body.lang-en .event-card__time {
   display: flex;
   flex-direction: column;
   align-items: start;
+  text-align: start;
   gap: 8px;
-  width: 100%;
+  width: 70%;
+  margin: 0 auto;
   margin-bottom: 22px;
   padding-top: 4px;
 }
@@ -1053,7 +1055,6 @@ body.lang-en .thankyou-text {
   font-family: 'Cormorant Garamond', serif;
   font-size: 13px;
   letter-spacing: 0.3em;
-  text-transform: uppercase;
   color: var(--teal);
   margin-top: 14px;
   margin-bottom: 0;
@@ -1104,7 +1105,6 @@ body.lang-en .cd-num {
   font-family: 'Cormorant Garamond', serif;
   font-size: 10px;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
   color: var(--text-soft);
   margin-top: 12px;
 }
@@ -1138,7 +1138,6 @@ body.lang-en .cd-num {
   font-family: 'Cormorant Garamond', serif;
   font-size: 13px;
   letter-spacing: 0.3em;
-  text-transform: uppercase;
   color: var(--teal);
 }
 
@@ -1148,7 +1147,7 @@ body.lang-en .cd-num {
 
 .finale-video-wrap {
   width: 50rem;
-  margin-left: -65%;
+  margin-left: -70%;
   overflow: hidden;
   /* border-radius: 12px; */
   margin-bottom: 32px;
@@ -1162,7 +1161,7 @@ body.lang-en .cd-num {
 }
 
 .finale .event-card__schedule {
-  align-items: center;
+  align-items: start;
 }
 
 .event-card__note {
@@ -1192,10 +1191,9 @@ body.lang-en .cd-num {
 }
 
 .closing-line {
-  font-family: 'Cormorant Garamond', serif;
+  /* font-family: 'Cormorant Garamond', serif; */
   font-size: 15px;
   letter-spacing: 0.32em;
-  text-transform: uppercase;
   color: var(--teal);
   line-height: 2.2;
   margin-bottom: 28px;
@@ -1210,7 +1208,7 @@ body.lang-en .cd-num {
 }
 
 .closing-love {
-  font-family: 'Cormorant Garamond', serif;
+  /* font-family: 'Cormorant Garamond', serif; */
   font-size: 18px;
   color: var(--text-soft);
   letter-spacing: 0.06em;
@@ -1219,7 +1217,7 @@ body.lang-en .cd-num {
 
 .closing-names {
   font-family: 'DM Medea Display', serif;
-  font-size: 34px;
+  font-size: 24px;
   color: #2d4870;
   letter-spacing: 0.03em;
   line-height: 1.2;

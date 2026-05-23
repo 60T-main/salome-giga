@@ -14,6 +14,7 @@ window.scrollTo(0, 0);
   var bgMusic       = document.getElementById('bg-music');
   var musicToggle   = document.getElementById('music-toggle');
   var musicSwitch   = document.getElementById('music-switch');
+  var petalsLayer   = document.getElementById('petals-layer');
 
   // Kick off audio buffering immediately — mobile often ignores preload="auto"
   if (bgMusic) bgMusic.load();
@@ -112,6 +113,7 @@ window.scrollTo(0, 0);
       document.body.classList.add('scrollbar-ready');
       langToggle.classList.add('visible');
       if (musicToggle) musicToggle.classList.add('visible');
+      if (petalsLayer) petalsLayer.classList.add('visible');
     }, 500);
   }
 
@@ -316,6 +318,36 @@ window.scrollTo(0, 0);
     revealEls.forEach(function (el) { revealObs.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  // ===== Falling Petals =====
+  if (petalsLayer) {
+    var petalSrcs  = ['pettle1.png', 'pettle2.png', 'pettle3.png'];
+    var petalAnims = ['petalFallA', 'petalFallB', 'petalFallC'];
+    var PETAL_COUNT = 6;
+    var heroEl = document.querySelector('.hero');
+    var siteEl = document.getElementById('site');
+    var heroH  = heroEl ? heroEl.offsetHeight : window.innerHeight;
+    var siteH  = siteEl ? siteEl.offsetHeight : (document.body.scrollHeight || 3000);
+    var zoneH  = Math.max(siteH - heroH, window.innerHeight);
+    for (var pi = 0; pi < PETAL_COUNT; pi++) {
+      var pel   = document.createElement('img');
+      pel.className = 'petal';
+      pel.src   = petalSrcs[pi % petalSrcs.length];
+      pel.alt   = '';
+      var pSize  = 44 + Math.floor(Math.random() * 28);
+      var pLeft  = (pi / PETAL_COUNT) * 94 + 3 + (Math.random() - 0.5) * 8;
+      pLeft = Math.max(3, Math.min(90, pLeft));
+      var pDur   = 14 + Math.random() * 8;
+      var pDelay = -(Math.random() * pDur);
+      var pAnim  = petalAnims[pi % petalAnims.length];
+      // Distribute petal tops evenly across the post-hero area
+      var topFrac = (pi + 0.5 + (Math.random() - 0.5) * 0.7) / PETAL_COUNT;
+      topFrac = Math.max(0, Math.min(0.95, topFrac));
+      var topPx = heroH + topFrac * zoneH;
+      pel.style.cssText = 'width:' + pSize + 'px;left:' + pLeft.toFixed(1) + '%;top:' + Math.round(topPx) + 'px;animation:' + pAnim + ' ' + pDur.toFixed(1) + 's ease-in-out infinite ' + pDelay.toFixed(1) + 's';
+      petalsLayer.appendChild(pel);
+    }
   }
 
 }());

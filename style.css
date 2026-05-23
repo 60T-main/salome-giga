@@ -708,7 +708,7 @@ body.lang-en .section-title {
 
 .event-card__label {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 0.28em;
   color: var(--teal);
   margin-bottom: 16px;
@@ -773,8 +773,8 @@ body.lang-en .event-card__sub {
 
 .event-card__time {
   font-family: 'DM Medea Display', serif;
-  font-size: var(--fs-time-sm);
-  color: var(--text);
+  font-size: 34px;
+  color: var(--teal);
   letter-spacing: 0.02em;
   margin-bottom: 22px;
   line-height: 1;
@@ -787,8 +787,8 @@ body.lang-en .event-card__time {
 .event-card__schedule {
   display: flex;
   flex-direction: column;
-  align-items: start;
-  text-align: start;
+  align-items: center;
+  text-align: center;
   gap: 8px;
   width: 70%;
   margin: 0 auto;
@@ -805,16 +805,16 @@ body.lang-en .event-card__time {
 
 .event-card__sub-time {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
+  font-size: 28px;
   color: var(--teal);
   letter-spacing: 0.08em;
-  min-width: 42px;
+  min-width: 80px;
   text-align: right;
 }
 
 .event-card__sub-label {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-soft);
   letter-spacing: 0.03em;
   text-align: left;
@@ -1136,7 +1136,8 @@ body.lang-en .cd-num {
 
 .day-date {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 13px;
+  font-size: 20px;
+  font-weight: bold;
   letter-spacing: 0.3em;
   color: var(--teal);
 }
@@ -1147,21 +1148,19 @@ body.lang-en .cd-num {
 
 .finale-video-wrap {
   width: 50rem;
-  margin-left: -70%;
+  margin-left: -63%;
   overflow: hidden;
   /* border-radius: 12px; */
   margin-bottom: 32px;
+  background: transparent;
 }
 
 .finale-video-wrap video {
   width: 100%;
   height: auto;
   display: block;
-  opacity: 0.85;
-}
-
-.finale .event-card__schedule {
-  align-items: start;
+  background: transparent;
+  clip-path: inset(2% 0);
 }
 
 .event-card__note {
@@ -1170,8 +1169,9 @@ body.lang-en .cd-num {
   color: var(--text-soft);
   letter-spacing: 0.02em;
   line-height: 1.7;
-  margin-top: 6px;
+  margin: 6px auto 0;
   max-width: 320px;
+  text-align: center;
 }
 
 /* ===== CLOSING ===== */
@@ -1299,7 +1299,6 @@ body.lang-en .closing-names {
   .events-cards       { flex-direction: row; align-items: flex-start; gap: 24px; }
   .event-card         { flex: 1; }
   .event-card__venue  { font-size: var(--fs-venue-lg); }
-  .event-card__time   { font-size: var(--fs-time-lg); }
 }
 
 @media (min-width: 1025px) {

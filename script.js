@@ -320,6 +320,21 @@ window.scrollTo(0, 0);
     revealEls.forEach(function (el) { el.classList.add('visible'); });
   }
 
+  // ===== Finale Video Autoplay =====
+  var finaleVideo = document.querySelector('.finale-video-wrap video');
+  if (finaleVideo && 'IntersectionObserver' in window) {
+    var finaleObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          finaleVideo.play().catch(function () {});
+        } else {
+          finaleVideo.pause();
+        }
+      });
+    }, { rootMargin: '300px 0px', threshold: 0 });
+    finaleObs.observe(finaleVideo);
+  }
+
   // ===== Falling Petals =====
   if (petalsLayer) {
     var petalSrcs  = ['pettle1.png', 'pettle2.png', 'pettle3.png'];

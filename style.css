@@ -1401,7 +1401,7 @@ body.lang-en .closing-names {
 }
 
 /* ===== BREAKPOINTS ===== */
-@media (min-width: 481px) {
+/* @media (min-width: 481px) {
   .h-names        { font-size: var(--fs-names-md); }
   .h-date         { font-size: 14px; }
   .h-subtitle     { font-size: 17px; }
@@ -1412,7 +1412,7 @@ body.lang-en .closing-names {
   .cd-unit        { min-width: 78px; padding: 0 20px; }
   .closing-names  { font-size: 42px; }
   .closing-crest  { width: 280px; }
-}
+} */
 
 @media (min-width: 769px) {
   .h-names        { font-size: var(--fs-names-lg); }

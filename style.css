@@ -87,6 +87,7 @@ body.lang-en {
 /* ===== BASE ===== */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -94,6 +95,7 @@ body {
   background-color: var(--bg);
   color: var(--text);
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 body.lang-en {
@@ -836,6 +838,24 @@ body.lang-en .event-card__time {
   letter-spacing: 0.05em;
   color: var(--text-soft);
   opacity: 0.75;
+}
+
+.event-card__after-desc {
+  grid-column: 1 / -1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.6;
+  opacity: 0.8;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  text-align: left;
+}
+
+body.lang-ka .event-card__after-desc {
+  font-family: 'Noto Serif Georgian', serif;
+  font-size: 12px;
 }
 
 .event-card__map {
